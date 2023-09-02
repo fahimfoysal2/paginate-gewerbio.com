@@ -795,8 +795,9 @@
   const firstPageButton = document.getElementById("firstPageButton");
   const lastPageButton = document.getElementById("lastPageButton");
 
-  let itemsPerPage = parseInt(itemsPerPageSelector.value);
-  let currentPage = 1;
+        let itemsPerPage = parseInt(itemsPerPageSelector.value);
+        let currentPage = 1;
+        const originalList = Array.from(list.getElementsByTagName("li"));
 
   // Function to display a specific page of items
   function displayPage(page) {
@@ -850,23 +851,28 @@
     generatePagination();
   }
 
-  // Function to filter items based on search input
-  function filterItems() {
-    const searchTerm = searchInput.value.toLowerCase();
-    const listItems = Array.from(list.getElementsByTagName("li"));
+        // Function to filter items based on search input
+        function filterItems() {
+            const searchTerm = searchInput.value.toLowerCase();
+            let filteredItemsCount = 0;
+            list.innerHTML = ""; // clear the list
 
-    listItems.forEach((item) => {
-      const text = item.textContent.toLowerCase();
-      if (text.includes(searchTerm)) {
-        item.style.display = "block";
-      } else {
-        item.style.display = "none";
-      }
-    });
+            originalList.forEach((item) => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    list.appendChild(item);
+                    filteredItemsCount++;
+                }
+            });
 
-    currentPage = 1; // Reset to the first page when searching
-    generatePagination();
-  }
+            if (filteredItemsCount === 0) {
+                list.innerHTML = "<li>No results found</li>";
+            }
+            // console.log(filteredItemsCount)
+            currentPage = 1; // Reset to the first page when searching
+            displayPage(currentPage);
+            generatePagination();
+        }
 
   // Function to generate the index sorted in ascending order
   function generateIndex() {
