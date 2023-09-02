@@ -247,7 +247,7 @@
                     <option value="96">96</option>
                     <option value="144">144</option>
                   </select>
-                  <span>Items per page: <span id="itemsPerPageDisplay">5</span></span>
+                  <span>Items per page: <span id="itemsPerPageDisplay">24</span></span>
                 </div>
 
                 <div class="page-navigation">
@@ -891,20 +891,22 @@
     }
     index.innerHTML = indexHTML;
 
-    const indexLinks = index.getElementsByTagName("a");
-    for (const link of indexLinks) {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        const char = this.getAttribute("data-char");
-        const items = indexMap[char];
-        list.innerHTML = ""; // Clear the list
-        items.forEach((item) => {
-          list.appendChild(item);
+      const indexLinks = index.getElementsByTagName("a");
+      for (const link of indexLinks) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const char = this.getAttribute("data-char");
+          const items = indexMap[char];
+          list.innerHTML = ""; // Clear the list
+          items.forEach((item) => {
+              list.appendChild(item);
+          });
+          currentPage = 1; // Reset to the first page when clicking an index character
+          displayPage(currentPage);
+          generatePagination();
         });
-        generatePagination();
-      });
+      }
     }
-  }
 
   // Event listeners for pagination controls
   prevPageButton.addEventListener("click", function () {
