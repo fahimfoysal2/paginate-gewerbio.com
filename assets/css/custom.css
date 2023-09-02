@@ -104,6 +104,18 @@ transform: rotate(45deg);
   align-items: center;
 }
 
+.custom-filter #searchInput {
+  height: 45px !important;
+  width: 180px;
+  flex-basis: auto;
+  flex-grow: 1;
+}
+
+div#item-list-index a.active {
+  color: #ffcc02;
+  font-weight: bolder;
+}
+
 .overview-item ul {
   list-style: none;
   padding: 0;
