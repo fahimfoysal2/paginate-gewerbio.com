@@ -891,22 +891,28 @@
     }
     index.innerHTML = indexHTML;
 
-      const indexLinks = index.getElementsByTagName("a");
-      for (const link of indexLinks) {
-        link.addEventListener("click", function (e) {
-          e.preventDefault();
-          const char = this.getAttribute("data-char");
-          const items = indexMap[char];
-          list.innerHTML = ""; // Clear the list
-          items.forEach((item) => {
-              list.appendChild(item);
-          });
-          currentPage = 1; // Reset to the first page when clicking an index character
-          displayPage(currentPage);
-          generatePagination();
-        });
-      }
-    }
+            const indexLinks = index.getElementsByTagName("a");
+            for (const link of indexLinks) {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const char = this.getAttribute("data-char");
+                    const items = indexMap[char];
+                    // remove active class from all index links and add it to the clicked link
+                    for (const link of indexLinks) {
+                        link.classList.remove("active");
+                    }
+                    this.classList.add("active");
+
+                    list.innerHTML = ""; // Clear the list
+                    items.forEach((item) => {
+                        list.appendChild(item);
+                    });
+                    currentPage = 1; // Reset to the first page when clicking an index character
+                    displayPage(currentPage);
+                    generatePagination();
+                });
+            }
+        }
 
   // Event listeners for pagination controls
   prevPageButton.addEventListener("click", function () {
