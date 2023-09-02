@@ -129,6 +129,41 @@ transform: rotate(45deg);
   background: #ebeafb;
 }
 
+.pagination-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-navigation button {
+  transition: all 0.3s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  padding: 6px;
+  border: solid 2px #E9EBF1;
+  margin-left: 4px;
+  background: #E0E0E0;
+}
+
+.page-navigation button:disabled {
+  background: none;
+}
+
+.page-navigation button:disabled img {
+  opacity: 0.3;
+}
+
+.page-navigation button:not(:disabled):hover {
+    background: #ebeafb;
+    border: solid 2px #adadae;
+}
+
+
 /* in smaller than 768px make it 100% */
 @media (max-width: 768px) {
   .overview-item li {
