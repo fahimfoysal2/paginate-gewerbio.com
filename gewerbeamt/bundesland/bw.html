@@ -814,33 +814,21 @@
   });
   }
 
-  // Function to generate pagination links
-  function generatePagination() {
-    const listItems = Array.from(list.getElementsByTagName("li"));
-    const totalPages = Math.ceil(listItems.length / itemsPerPage);
-    const pageRange = 2; // Number of page numbers to display before and after current page
 
-    let paginationHTML = "";
-    for (let i = Math.max(1, currentPage - pageRange); i <= Math.min(currentPage + pageRange, totalPages); i++) {
-      paginationHTML += `<a href="#" data-page="${i}" ${i === currentPage ? 'class="current"' : ''}>${i}</a>`;
-    }
-    pagination.innerHTML = paginationHTML;
+        // Function to show displayed items range and pagination
+        function generatePagination() {
+            const listItems = Array.from(list.getElementsByTagName("li"));
+            const totalPages = Math.ceil(listItems.length / itemsPerPage);
 
-    const paginationLinks = pagination.getElementsByTagName("a");
-    for (const link of paginationLinks) {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        currentPage = parseInt(this.getAttribute("data-page"));
-        displayPage(currentPage);
-        generatePagination();
-      });
-    }
+            // show items range that are displayed
+            let displayRangeEnd = currentPage * itemsPerPage < listItems.length ? currentPage * itemsPerPage : listItems.length;
+            pagination.innerHTML = `Zeige ${currentPage * itemsPerPage - itemsPerPage + 1} - ${displayRangeEnd} von ${listItems.length} Einträgen`;
 
-    prevPageButton.disabled = currentPage === 1;
-    nextPageButton.disabled = currentPage === totalPages;
-    firstPageButton.disabled = currentPage === 1;
-    lastPageButton.disabled = currentPage === totalPages;
-  }
+            prevPageButton.disabled = currentPage === 1;
+            nextPageButton.disabled = currentPage === totalPages;
+            firstPageButton.disabled = currentPage === 1;
+            lastPageButton.disabled = currentPage === totalPages;
+        }
 
         // Function to update the number of items to show per page
         function updateItemsPerPage() {
