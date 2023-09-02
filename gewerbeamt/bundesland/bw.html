@@ -872,6 +872,11 @@
             currentPage = 1; // Reset to the first page when searching
             displayPage(currentPage);
             generatePagination();
+            // remove active class from index links
+            const indexLinks = index.getElementsByTagName("a");
+            for (const link of indexLinks) {
+                link.classList.remove("active");
+            }
         }
 
   // Function to generate the index sorted in ascending order
