@@ -175,6 +175,13 @@ div#item-list-index a.active {
     border: solid 2px #adadae;
 }
 
+select#itemsPerPageSelector {
+  border: 2px solid #e9ebf1;
+  border-radius: 4px;
+  color: #343434b3;
+  font-size: 14px;
+}
+
 
 /* in smaller than 768px make it 100% */
 @media (max-width: 768px) {
