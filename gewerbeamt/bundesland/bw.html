@@ -241,13 +241,13 @@
 
               <div class="pagination-container">
                 <div class="page-by-items">
+                  <span>Items per page: </span>
                   <select id="itemsPerPageSelector">
                     <option value="24">24</option>
                     <option value="48">48</option>
                     <option value="96">96</option>
                     <option value="144">144</option>
                   </select>
-                  <span>Items per page: <span id="itemsPerPageDisplay">24</span></span>
                 </div>
 
                 <div class="page-navigation">
@@ -785,15 +785,15 @@
   const overviewItem = document.getElementsByClassName("overview-item")[0];
   const list = overviewItem.getElementsByTagName("ul")[0];
 
-  const pagination = document.getElementById("pagination");
-  const searchInput = document.getElementById("searchInput");
-  const index = document.getElementById("item-list-index");
-  const itemsPerPageSelector = document.getElementById("itemsPerPageSelector");
-  const itemsPerPageDisplay = document.getElementById("itemsPerPageDisplay");
-  const prevPageButton = document.getElementById("prevPageButton");
-  const nextPageButton = document.getElementById("nextPageButton");
-  const firstPageButton = document.getElementById("firstPageButton");
-  const lastPageButton = document.getElementById("lastPageButton");
+        const pagination = document.getElementById("pagination");
+        const searchInput = document.getElementById("searchInput");
+        const index = document.getElementById("item-list-index");
+        const itemsPerPageSelector = document.getElementById("itemsPerPageSelector");
+        // const itemsPerPageDisplay = document.getElementById("itemsPerPageDisplay");
+        const prevPageButton = document.getElementById("prevPageButton");
+        const nextPageButton = document.getElementById("nextPageButton");
+        const firstPageButton = document.getElementById("firstPageButton");
+        const lastPageButton = document.getElementById("lastPageButton");
 
         let itemsPerPage = parseInt(itemsPerPageSelector.value);
         let currentPage = 1;
@@ -842,14 +842,14 @@
     lastPageButton.disabled = currentPage === totalPages;
   }
 
-  // Function to update the number of items to show per page
-  function updateItemsPerPage() {
-    itemsPerPage = parseInt(itemsPerPageSelector.value);
-    itemsPerPageDisplay.textContent = itemsPerPage;
-    currentPage = 1;
-    displayPage(currentPage);
-    generatePagination();
-  }
+        // Function to update the number of items to show per page
+        function updateItemsPerPage() {
+            itemsPerPage = parseInt(itemsPerPageSelector.value);
+            // itemsPerPageDisplay.textContent = itemsPerPage;
+            currentPage = 1;
+            displayPage(currentPage);
+            generatePagination();
+        }
 
         // Function to filter items based on search input
         function filterItems() {
