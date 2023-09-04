@@ -102,6 +102,7 @@ transform: rotate(45deg);
   padding: 10px 0;
   gap: 8px;
   align-items: center;
+  font-size: 24px;
 }
 
 .custom-filter #searchInput {
@@ -114,6 +115,9 @@ transform: rotate(45deg);
 div#item-list-index a.active {
   color: #ffcc02;
   font-weight: bolder;
+  padding: 0 4px;
+  background-color: #FFCC0244;
+  border-radius: 5px;
 }
 
 .overview-item ul {
