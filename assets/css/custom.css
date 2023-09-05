@@ -133,12 +133,16 @@ div#item-list-index a.active {
 .overview-item li {
   flex: 0 0 48%;
   max-width: 50%;
-  padding: 12px 37px 12px 15px;
   background: #E0E0E0;
   border-radius: 5px;
   margin-bottom: 15px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+}
+
+.overview-item ul a {
+  display: block;
+  padding: 12px 37px 12px 15px;
 }
 
 .overview-item li:hover {
